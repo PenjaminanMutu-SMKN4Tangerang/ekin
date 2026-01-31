@@ -2,112 +2,48 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jurnal Kinerja Guru - SMKN 4 Tangerang</title>
-    
-    <!-- Mencegah Indexing Google Search pada Wrapper (Opsional) -->
-    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Jurnal Guru - SMKN 4 Tangerang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #f3f4f6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            font-family: 'Inter', sans-serif;
+            display: flex; justify-content: center; align-items: center; height: 100vh;
         }
-        /* Full Screen Iframe */
-        iframe {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: none;
-            opacity: 0; /* Hidden start for transition */
-            transition: opacity 0.5s ease-in;
+        .container {
+            background: white; padding: 40px; border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            text-align: center; max-width: 400px; width: 90%;
         }
-        /* Loading Animation Container */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
+        h1 { color: #1e3a8a; font-size: 1.5rem; margin-bottom: 10px; }
+        p { color: #6b7280; margin-bottom: 30px; font-size: 0.9rem; line-height: 1.6; }
+        .btn-launch {
+            background: #2563eb; color: white; text-decoration: none;
+            padding: 15px 30px; border-radius: 12px; font-weight: 600;
+            display: inline-block; transition: 0.3s; width: 100%; box-sizing: border-box;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
         }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e5e7eb;
-            border-top: 5px solid #2563eb; /* Blue Primary */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .loading-text {
-            margin-top: 20px;
-            color: #374151;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .loading-sub {
-            margin-top: 5px;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Mobile Navbar Hack (Optional fix for mobile browsers address bar) */
-        @media screen and (max-height: 500px) {
-            iframe { height: 100vh; }
-        }
+        .btn-launch:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .footer { margin-top: 25px; font-size: 0.75rem; color: #9ca3af; }
     </style>
 </head>
 <body>
-    <!-- Animasi Loading Cepat -->
-    <div id="loader">
-        <div class="spinner"></div>
-        <div class="loading-text">Memuat Sistem Kinerja Guru...</div>
-        <div class="loading-sub">Menghubungkan ke Database Sekolah</div>
-    </div>
-    <!-- PENTING: GANTI URL DI BAWAH INI -->
-    <iframe 
-        id="appFrame"
-        src="https://script.google.com/macros/s/AKfycbwhgNbvgA0Isjq-fzjZep-4MNyEskz5wj5sBiTT63fRyDYY71432qPpD2q7r0CgM-QDtg/exec" 
-        allow="camera; microphone; geolocation"
-        sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation">
-    </iframe>
-    <script>
-        const iframe = document.getElementById('appFrame');
-        const loader = document.getElementById('loader');
-        // Saat iframe selesai loading awal
-        iframe.onload = function() {
-            // Beri sedikit jeda agar render Apps Script selesai sempurna
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                iframe.style.opacity = '1';
-                // Hapus loader dari DOM setelah transisi
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500); // 1.5 detik loading maskimal untuk UX halus
-        };
+    <div class="container">
+        <!-- Logo Sekolah (Jika ada URL-nya) -->
+        <h1>Sistem Jurnal Guru</h1>
+        <p>Selamat Datang di Portal Presensi & Jurnal KBM Digital <br><strong>SMK Negeri 4 Tangerang</strong></p>
         
-        // Timeout Error Handling (Jika Apps Script down/lambat > 10 detik)
-        setTimeout(() => {
-            if (loader.style.display !== 'none') {
-                document.querySelector('.loading-text').innerText = "Sedang menyinkronkan data...";
-                // Jangan hilangkan loader, biarkan user menunggu sampai Google merespon
-            }
-        }, 8000);
-    </script>
+        <!-- LINK LANGSUNG KE APPS SCRIPT -->
+        <a href="https://script.google.com/macros/s/AKfycbwhgNbvgA0Isjq-fzjZep-4MNyEskz5wj5sBiTT63fRyDYY71432qPpD2q7r0CgM-QDtg/exec" class="btn-launch">
+            🚀 Masuk Ke Aplikasi
+        </a>
+
+        <div class="footer">
+            Powered by Labase Official <br>
+            H.Suhendi, S.Kom., M.Kom
+        </div>
+    </div>
 </body>
 </html>
